@@ -1,26 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import List from "./List";
+import { render } from "react-dom";
 
 
 function Container(){
 
-    function SendNewTask() {
+    const [exList, setExList] = useState("");
+
+    function sendNewTask() {
 
         let task = document.getElementById("newTask").value;
         let owner = document.getElementById("newOwner").value;
 
         const fullTask = { task, owner, simpleId: `${Date.now()}`};
         console.log(fullTask);
-
-        return (<List testeUm={fullTask}/>)
     }
-/*
-    function HandleChange(e) {
-        console.log(e.target.value);
-        return e.target.value
-    }
-*/
 
     return (
         <div id="container">  
@@ -28,7 +23,7 @@ function Container(){
             <br />
             <input id="newOwner" placeholder="Digite o nome do criador" type="text" />
             <br />
-            <button type="button" onClick={SendNewTask}>
+            <button type="button" onClick={sendNewTask}>
                 Criar!
             </button>
             <br />
@@ -38,7 +33,7 @@ function Container(){
                 <h3>Teste Dono</h3>
             </div>
             
-            <List />
+            <List testUm="false" />
 
         </div>
     )
