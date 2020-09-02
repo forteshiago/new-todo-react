@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import List from "./List";
 import { render } from "react-dom";
 
 
 function Container(){
-
-    const [exList, setExList] = useState("");
 
     function sendNewTask() {
 
