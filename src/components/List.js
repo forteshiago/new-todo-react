@@ -1,37 +1,38 @@
 import React, { useState } from "react";
+import { render } from "react-dom";
 
-function List({testeUm}){
-
-    //console.log({testeUm});
+function List({vai, fullTask}){
 
     const [tasks] = useState([
-       {newTask:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}
+       {task:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}
     ]);
 
-   if({testeUm} == "false") {
-    return (
-        <div id="recebe">
+    function renderAllTasks() {
+        return(
+        <div id="lista">
             <ul>
             { tasks.map((eachTask) => (
                 <li key={eachTask.simpleId}>
-                    <b>{ eachTask.owner }: </b>{ eachTask.newTask }
+                    <b>{ eachTask.owner }: </b>{ eachTask.task }
                 </li>            
             ))}
             </ul>
-    
-            <div>
-                <h1>{testeUm}</h1>
-            </div>
         </div>
-     )
+        )
+    }
+
+    if(vai == false) {
+    return (
+        renderAllTasks()
+    )
 
     } else {
-    
-       console.log(testeUm);
-       return(
-        <div id="naorecebe">
-            <h1>{testeUm}</h1>
-        </div>
+        return(
+            <>
+            <h2>{fullTask.task}</h2>
+            <h2>{fullTask.owner}</h2>
+            <h2>{fullTask.simpleId}</h2>    
+            </>        
         )
     }
    
@@ -39,6 +40,3 @@ function List({testeUm}){
 };
 
 export default List;
-
- //let criaLi = document.createElement('li');
- //criaLi.setAttribute('class', 'nomeNaLista');

@@ -15,6 +15,10 @@ function Container(){
 
         const fullTask = { task, owner, simpleId: `${Date.now()}`};
         console.log(fullTask);
+
+        let confirm = true
+        console.log(confirm);
+        render(<List vai={confirm} fullTask={fullTask}/>, document.getElementById("lista"));
     }
 
     return (
@@ -33,7 +37,7 @@ function Container(){
                 <h3>Teste Dono</h3>
             </div>
             
-            <List testUm="false" />
+            <List vai={false}/>
 
         </div>
     )
