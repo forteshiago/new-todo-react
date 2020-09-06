@@ -1,44 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
+
+import List from "./List";
+import { render } from "react-dom";
 
 
 function Container(){
 
-    const [tasks, setTasks] = useState([{newTask:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}]);
-    const [newTask, setNewTask] = useState(""); //string vazia
-    const [owner, setOwner] = useState("");
+    function sendNewTask() {
 
-    function addNewTask() {
-        const task = { newTask, owner, simpleId: `${Date.now()}`};
-  
-        setTasks([...tasks, task]);
-        // console.log(tasks);
-        setNewTask("");
-        setOwner("");
+        let task = document.getElementById("newTask").value;
+        let owner = document.getElementById("newOwner").value;
+
+        const fullTask = { task, owner, simpleId: `${Date.now()}`};
+        console.log(fullTask);
+
+        let confirm = true
+        console.log(confirm);
+        render(<List vai={confirm} fullTask={fullTask}/>, document.getElementById("lista"));
     }
 
     return (
         <div id="container">  
-            <input value={newTask} placeholder="Digite uma nova tarefa" type="text" onChange={(e) => setNewTask(e.target.value)} />
+            <input id="newTask" placeholder="Digite uma nova tarefa" type="text" />
             <br />
-            <input value={owner} placeholder="Digite o nome do criador" type="text" onChange={(e) => setOwner(e.target.value)} />
+            <input id="newOwner" placeholder="Digite seu nome" type="text" />
             <br />
-            <button type="button" onClick={addNewTask}>
-                Criar!
+            <button type="button" onClick={sendNewTask}>
+                Gravar
             </button>
             <br />
             
             <div className="previewTask">
-                <h3>{newTask}</h3>
-                <h3>{owner}</h3>
+                <h3>Teste Mensagem</h3>
+                <h3>Teste Dono</h3>
             </div>
             
-            <ul>
-                { tasks.map((eachTask) => (
-                    <li key={eachTask.simpleId}>
-                        <b>{ eachTask.owner }: </b>{ eachTask.newTask }
-                    </li>            
-                ))}
-            </ul>
+            <List vai={false}/>
 
         </div>
     )
