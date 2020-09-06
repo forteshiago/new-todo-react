@@ -23,10 +23,10 @@ function Container(){
         <div id="container">  
             <input id="newTask" placeholder="Digite uma nova tarefa" type="text" />
             <br />
-            <input id="newOwner" placeholder="Digite o nome do criador" type="text" />
+            <input id="newOwner" placeholder="Digite seu nome" type="text" />
             <br />
             <button type="button" onClick={sendNewTask}>
-                Criar!
+                Gravar
             </button>
             <br />
             

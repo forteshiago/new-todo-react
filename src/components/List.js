@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 function List({vai, fullTask}){
 
-    let [tasks, setTasks] = useState([
-        {task:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}
-    ]);
+    let tasks = [
+        {task:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"},
+        {task:"Refazer os exercícios", owner:"Mario", simpleId:"testeUm1012"}
+    ];
 
     function renderAllTasks() {
         return(
@@ -20,12 +21,6 @@ function List({vai, fullTask}){
         )
     }
 
-    function addNewTask() {
-        const task = { task:`${fullTask.task}`, owner:`${fullTask.owner}`, simpleId:`${fullTask.simpleId}` };
-  
-        setTasks([...tasks, task]);
-    }
-
 // ----------------------------------------------------------------------------------
 
     if(vai == false) {
@@ -35,14 +30,12 @@ function List({vai, fullTask}){
 
     } else {
 
-        //addNewTask();
+        let task = { task:`${fullTask.task}`, owner:`${fullTask.owner}`, simpleId:`${fullTask.simpleId}` };
+        
+        tasks.push(task);
 
         return(
-            <>
-            <h2>{fullTask.task}</h2>
-            <h2>{fullTask.owner}</h2>
-            <h2>{fullTask.simpleId}</h2>   
-            </> 
+            renderAllTasks()
         )
     }
 };
