@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import TaskItem from './TaskItem';
+
 function List({}){
     const [task, setTask] = useState("");
     const [owner, setOwner] = useState("");
@@ -14,11 +16,9 @@ function List({}){
         console.log(newTask);
     }
 
-    function handleDelete (idTask) {
+    function handleDelete(idTask) {
         setTasks(tasks.filter((eachTask) => eachTask.simpleId !== idTask))
     }
-
-
 
     return (
         <>
@@ -41,11 +41,7 @@ function List({}){
 
             <ul>
                 {tasks.map((eachTask) => (
-                    <li key={eachTask.simpleId}>
-                        <b>{eachTask.owner} : </b>
-                        {eachTask.task}
-                        <button type="button" onClick={() => handleDelete(eachTask.simpleId)} > Deletar </button>
-                    </li>
+                    <TaskItem key={eachTask.simpleId} task={eachTask} onDelete={() => handleDelete(eachTask.simpleId)}/>
                 ))}
             </ul>
 

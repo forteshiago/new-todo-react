@@ -1,6 +1,6 @@
 import React from "react";
 
-import List from "./List";
+import TaskList from "./TaskList";
 
 
 function Container(){
@@ -9,7 +9,7 @@ function Container(){
         <div id="container">  
             
             
-            <List />
+            <TaskList />
 
         </div>
     )
